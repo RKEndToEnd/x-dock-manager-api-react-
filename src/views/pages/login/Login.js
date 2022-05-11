@@ -41,7 +41,7 @@ function Login() {
           localStorage.setItem('auth_token', res.data.token)
           localStorage.setItem('auth_name', res.data.username)
           swal('Witaj!', res.data.message, 'success')
-          navigate('/')
+          navigate('/dashboard')
         } else if (res.data.status === 401) {
           swal('Uwaga!', res.data.message, 'warning')
         } else {

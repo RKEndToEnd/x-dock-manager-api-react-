@@ -31,6 +31,21 @@ const PrivateRoutes = () => {
     }
     return Promise.reject(err)
   })
+  axios.interceptors.response.use(
+    function (response) {
+      return response
+    },
+    function (error) {
+      if (error.response.status === 403) {
+        swal('Uwaga!', error.response.data.message, 'warning')
+        navigate('/')
+      } else if (error.response.status === 404) {
+        swal('Uwaga! Błąd 404.', 'Strona nie została znaleziona.', 'warning')
+        navigate('/404')
+      }
+      return Promise.reject(error)
+    },
+  )
   if (load) {
     return <h5 className="text-info opacity-50">Ładowanie...</h5>
   }

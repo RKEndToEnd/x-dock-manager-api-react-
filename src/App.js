@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
 import axios from 'axios'
 import PrivateRoutes from './PrivateRoutes'
+import UsersList from './views/users/UsersList'
 
 const loading = (
   <div className="pt-3 text-center">
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="*" name="Home" element={<DefaultLayout />} />
             <Route exact path="/" element={<PrivateRoutes />}>
               <Route exact path="/dashboard" element={<Dashboard />} />
+              <Route exact path="/users/list" element={<UsersList />} />
             </Route>
           </Routes>
         </Suspense>
